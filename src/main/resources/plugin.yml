@@ -1,0 +1,5 @@
+name: MelonHigh
+author: roblikescake
+main: com.melonquest.roblikescake.melonhigh.MelonHigh
+description: Wanna get high?
+version: ${project.version}
