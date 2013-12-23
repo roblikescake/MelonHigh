@@ -44,25 +44,37 @@ public class PlayerListener implements Listener{
 		player.sendMessage(ChatColor.DARK_GREEN + "Heyyyy man are you enjoying that buzzzzz???");
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 
-		event.setJoinMessage(ChatColor.BLACK + "[" + ChatColor.GREEN + "+" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+		if (!player.hasPermission("melonhigh.admin")) {
+			event.setJoinMessage(ChatColor.BLACK + "[" + ChatColor.GREEN + "+" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+		} else {
+			event.setJoinMessage(null);
+		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		Player player = event.getPlayer();
 
-		event.setQuitMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+	    if (!player.hasPermission("melonhigh.admin")) {
+		    event.setQuitMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+	    } else {
+		    event.setQuitMessage(null);
+	    }
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onPlayerKick(PlayerKickEvent event) {
 		Player player = event.getPlayer();
 
-		event.setLeaveMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+		if (!player.hasPermission("melonhigh.admin")) {
+			event.setLeaveMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.GRAY + player.getName());
+		} else {
+			event.setLeaveMessage(null);
+		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
